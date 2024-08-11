@@ -1,12 +1,10 @@
-
-**`retrieve.md`:**
-
-```markdown
 ### Retrieve Operation
 
 **Command:**
 
 ```python
+from bookshelf.models import Book
+
 # Retrieve all books
 books = Book.objects.all()
 for b in books:
