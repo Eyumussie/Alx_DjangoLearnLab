@@ -1,5 +1,6 @@
 from django.urls import path
-from . import views import list_books # Import views from the current directory
+from . import views 
+from .views import list_books
 
  
 urlpatterns = [
