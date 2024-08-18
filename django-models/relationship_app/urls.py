@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views import list_books # Import views from the current directory
+from django.contrib.auth import views as auth_views
+from . import views
 
  
 urlpatterns = [
