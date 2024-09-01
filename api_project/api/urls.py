@@ -1,6 +1,7 @@
 from django.urls import path
-from rest_framework.authtoken.views import obtain_auth_token
+from .views import BookListCreate, BookDetail
 
 urlpatterns = [
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    path('books/', BookListCreate.as_view(), name='book-list-create'),  # List all books or create a new book
+    path('books/<int:pk>/', BookDetail.as_view(), name='book-detail'),  # Retrieve, update, or delete a book by ID
 ]
