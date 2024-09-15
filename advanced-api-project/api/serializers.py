@@ -1,18 +1,14 @@
-# api/serializers.py
-
 from rest_framework import serializers
-from .models import Author  # Import your Author model
+from .models import Book
+import datetime
 
-class AuthorSerializer(serializers.ModelSerializer):
-    # Define fields here if needed
-
+class BookSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Author
-        fields = '__all__'  # You can specify particular fields if needed
+        model = Book
+        fields = ['id', 'title', 'publication_year', 'author']
 
-class AuthorSerializer(serializers.ModelSerializer):
-    books = serializers.PrimaryKeyRelatedField(many=True, read_only=True)  # Assuming an Author has many Books
-
-    class Meta:
-        model = Author
-        fields = ['id', 'name', 'books']  # Customize fields as necessary
+    def validate_publication_year(self, value):
+        current_year = datetime.datetime.now().year
+        if value > current_year:
+            raise serializers.ValidationError("The publication year cannot be in the future.")
+        return value
