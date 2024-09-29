@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ud_33$g$30=v+%mk!wauyc_#*^t#je6$pfobctzs$y8v2g8nif'
+SECRET_KEY = 'django-insecure-9j*8d7erj80kb%#yi0ut7#y@id85$s$q+68%qjz10^$133ot73'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
+    'taggit',
 ]
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,6 +73,11 @@ TEMPLATES = [
             ],
         },
     },
+    {
+        # other settings
+        'DIRS': [BASE_DIR / 'blog/templates'],
+        # other settings
+    },
 ]
 
 WSGI_APPLICATION = 'django_blog.wsgi.application'
@@ -75,10 +88,15 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'alx_book_store',
+        'USER': 'root',
+        'PASSWORD': '0978101611@Baki',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
